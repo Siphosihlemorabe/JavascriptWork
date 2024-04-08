@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Friend List</title>
+  </head>
+  <body>
+    <input type="text" id="friendInput" placeholder="Enter friend's name" />
+    <button id="addFriend">Add Friend</button>
+    <table id="friendTable">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Name</th>
+          <th>Votes</th>
+        </tr>
+      </thead>
+      <tbody id="friendList"></tbody>
+    </table>
+
+    <script>
+      // Step 1: Create array of people's names
+      let myArray = [];
+
+      // Step 2: Select page elements
+      const friendInput = document.getElementById("friendInput");
+      const addFriendButton = document.getElementById("addFriend");
+      const friendList = document.getElementById("friendList");
+
+      // Step 3: Add event listener to Add Friend button
+      addFriendButton.addEventListener("click", () => {
+        const newFriend = friendInput.value.trim();
+        if (newFriend !== "") {
+          myArray.push(newFriend);
+          buildContent();
+          friendInput.value = ""; // Clear input field after adding friend
+        }
+      });
+
+      // Step 4: Build content on the page using forEach loop
+      function buildContent() {
+        friendList.innerHTML = ""; // Clear previous content
+        myArray.forEach((friend, index) => {
+          const friendRow = document.createElement("tr");
+          const indexCell = document.createElement("td");
+          const nameCell = document.createElement("td");
+          const voteCell = document.createElement("td");
+
+          indexCell.textContent = index + 1;
+          nameCell.textContent = friend;
+          voteCell.textContent = 0; // Default vote count
+
+          friendRow.appendChild(indexCell);
+          friendRow.appendChild(nameCell);
+          friendRow.appendChild(voteCell);
+          friendList.appendChild(friendRow);
+
+          // Step 7: Add event listener to increase vote counter
+          friendRow.addEventListener("click", () => {
+            let currentVotes = parseInt(voteCell.textContent);
+            currentVotes++;
+            voteCell.textContent = currentVotes;
+          });
+        });
+      }
+
+      // Initial build
+      buildContent();
+    </script>
+  </body>
+</html>

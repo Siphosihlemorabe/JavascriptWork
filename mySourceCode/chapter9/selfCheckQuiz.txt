@@ -1,0 +1,6 @@
+1 the body structure of the website
+2 document.body.textcontent="Hello Wprld"
+3 console.dir(document);
+4 console.dir(window);
+5 const element = document.querySelector("h1");
+element.textcontent = "Hello World"

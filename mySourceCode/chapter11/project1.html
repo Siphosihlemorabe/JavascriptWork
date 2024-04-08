@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Click Tracking</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div id="main-container">
+      <div class="box" id="box1">Box 1</div>
+      <div class="box" id="box2">Box 2</div>
+      <div class="box" id="box3">Box 3</div>
+      <div class="box" id="box4">Box 4</div>
+    </div>
+    <script>
+      // Array to store clicked elements' details
+      const counter = [];
+
+      // Selecting the main container element by its id
+      const main = document.getElementById("main-container");
+
+      // Adding click event listener to the main container
+      main.addEventListener("click", tracker);
+
+      // Function to handle click events
+      function tracker(event) {
+        // Get the clicked element
+        const clickedElement = event.target;
+
+        // Check if the clicked element has an ID
+        if (clickedElement.id) {
+          // Create an object to store details of the clicked element
+          const elementDetails = {
+            content: clickedElement.textContent,
+            id: clickedElement.id,
+            tagName: clickedElement.tagName,
+            className: clickedElement.className,
+          };
+
+          // Log the clicked element's details to the console
+          console.dir(clickedElement);
+
+          // Add the object to the counter array
+          counter.push(elementDetails);
+
+          // Log the counter array to the console
+          console.log(counter);
+        }
+      }
+    </script>
+  </body>
+</html>

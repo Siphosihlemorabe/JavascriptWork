@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Toggle Mode</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        transition: background-color 0.5s, color 0.5s;
+      }
+    </style>
+  </head>
+  <body>
+    <h1 id="darkMode">Dark Mode</h1>
+    <h1 id="lightMode">Light Mode</h1>
+    <button onclick="toggleMode()">Toggle Mode</button>
+
+    <script>
+      // Boolean variable to track the mode
+      let darkMode = false;
+      let darkModeTxt = document.getElementById("darkMode");
+      let lightMode = document.getElementById("lightMode");
+      // Function to toggle between regular mode and dark mode
+      function toggleMode() {
+        // Update the value of darkMode variable
+        darkMode = !darkMode;
+
+        // Check if dark mode is enabled
+        if (darkMode) {
+          document.body.style.backgroundColor = "black";
+          document.body.style.color = "white";
+          darkModeTxt.style.display = "block"; // Hide dark mode text
+          lightMode.style.display = "none"; // Show light mode text
+          console.log("Dark mode enabled");
+        } else {
+          document.body.style.backgroundColor = "white";
+          document.body.style.color = "black";
+          darkModeTxt.style.display = "none"; // Show dark mode text
+          lightMode.style.display = "block"; // Hide light mode text
+          console.log("Regular mode enabled");
+        }
+      }
+    </script>
+  </body>
+</html>

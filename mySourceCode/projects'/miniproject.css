@@ -1,0 +1,32 @@
+/* Body color */
+body {
+  background-color: #f0f0f0; /* Light gray background color */
+}
+
+/* Container for wishlist elements */
+.wishlist-container {
+  margin-bottom: 20px; /* Added margin for better spacing */
+}
+
+/* Input field styles */
+.wishlist-input {
+  border: 1px solid #ccc; /* Gray border */
+  border-radius: 20px; /* Curved border */
+  padding: 8px 12px; /* Padding inside the input field */
+  margin-right: 10px; /* Margin to separate from buttons */
+}
+
+/* Button styles */
+.wishlist-button {
+  background-color: #007bff; /* Blue background color */
+  color: #fff; /* White text color */
+  border: none; /* No border */
+  padding: 10px 20px; /* Padding inside the button */
+  cursor: pointer; /* Cursor on hover */
+  border-radius: 20px; /* Curved border */
+  margin-bottom: 10px; /* Margin to separate buttons */
+}
+
+.wishlist-button:hover {
+  background-color: #0056b3; /* Darker blue on hover */
+}

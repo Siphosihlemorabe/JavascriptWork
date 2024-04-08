@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>JS Tester</title>
+    <style>
+      .active {
+        display: block; /* Changed to display: block */
+      }
+      .myText {
+        display: none;
+      }
+      .title {
+        font-size: 1.5em;
+        background-color: #ddd;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="title">Title #1</div>
+      <div class="myText">Just some text #1</div>
+      <div class="title">Title #2</div>
+      <div class="myText">Just some text #2</div>
+      <div class="title">Title #3</div>
+      <div class="myText">Just some text #3</div>
+    </div>
+    <script>
+      // Step 1: Select all elements with class 'title'
+      const titles = document.querySelectorAll(".title");
+
+      // Step 2: Select all elements with class 'myText'
+      const myTextElements = document.querySelectorAll(".myText");
+
+      // Step 3: Add event listeners to title elements to toggle active class on next sibling
+      titles.forEach((title) => {
+        title.addEventListener("click", () => {
+          // Step 4: Find the next sibling with class 'myText'
+          const nextTextElement = title.nextElementSibling;
+
+          // Step 5: Toggle active class on the next sibling with class 'myText'
+          nextTextElement.classList.toggle("active");
+
+          // Step 6: Function to remove active class from all myText elements except the clicked one
+          removeActiveClassFromOthers(nextTextElement);
+        });
+      });
+
+      // Function to remove active class from all myText elements except the clicked one
+      function removeActiveClassFromOthers(clickedElement) {
+        myTextElements.forEach((element) => {
+          if (element !== clickedElement) {
+            element.classList.remove("active");
+          }
+        });
+      }
+    </script>
+  </body>
+</html>

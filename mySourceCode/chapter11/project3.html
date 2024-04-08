@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mouse Event Tracking</title>
+    <style>
+      #page-element {
+        width: 200px;
+        height: 200px;
+        border: 2px solid black;
+      }
+
+      .active {
+        background-color: rgb(49, 70, 173);
+      }
+    </style>
+  </head>
+  <body>
+    <div id="main-container">
+      <div id="page-element"></div>
+      <div id="output"></div>
+    </div>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const pageElement = document.getElementById("page-element");
+        const output = document.getElementById("output");
+
+        // Adding event listeners to main container
+        const mainContainer = document.getElementById("main-container");
+        mainContainer.addEventListener("mouseover", addActiveClass);
+        mainContainer.addEventListener("mouseout", removeActiveClass);
+        mainContainer.addEventListener("mousemove", trackMousePosition);
+
+        // Function to add active class on mouseover
+        function addActiveClass(event) {
+          pageElement.classList.add("active");
+        }
+
+        // Function to remove active class on mouseout
+        function removeActiveClass(event) {
+          pageElement.classList.remove("active");
+        }
+
+        // Function to track mouse position on mousemove
+        function trackMousePosition(event) {
+          const clientX = event.clientX;
+          const clientY = event.clientY;
+          output.textContent = `Mouse position - X: ${clientX}, Y: ${clientY}`;
+        }
+      });
+    </script>
+  </body>
+</html>

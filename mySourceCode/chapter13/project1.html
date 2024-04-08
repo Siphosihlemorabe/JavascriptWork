@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Password Checker</title>
+  </head>
+  <body>
+    <h1>Password Checker</h1>
+    <input type="text" id="passwordInput" placeholder="Enter password" />
+    <button onclick="checkPassword()">Check Password</button>
+
+    <script>
+      const allowedPasswords = ["2468", "pass", "pasword"];
+
+      function login(password) {
+        return allowedPasswords.includes(password);
+      }
+
+      function checkPassword() {
+        const password = document.getElementById("passwordInput").value;
+        checkPasswordPromise(password)
+          .then((result) => {
+            alert("Password is valid: " + JSON.stringify(result));
+          })
+          .catch((error) => {
+            alert("Password is invalid: " + JSON.stringify(error));
+          });
+      }
+
+      function checkPasswordPromise(password) {
+        return new Promise((resolve, reject) => {
+          if (login(password)) {
+            resolve({ valid: true });
+          } else {
+            reject({ valid: false });
+          }
+        });
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>JavaScript Course</title>
+    <style>
+      .output {
+        margin-top: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="output"></div>
+    <input type="text" placeholder="Enter Email" />
+    <button>Check</button>
+
+    <script>
+      // Selecting elements
+      const output = document.querySelector(".output");
+      const emailInput = document.querySelector("input");
+      const checkButton = document.querySelector("button");
+
+      // Regular expression for validating email
+      const emailRegExp = /([A-Za-z0-9._-]+@[A-Za-z0-9._-]+\.[A-Za-z0-9]+)\w+/;
+
+      // Adding event listener to the button
+      checkButton.addEventListener("click", () => {
+        // Getting the value of the email input
+        const emailValue = emailInput.value;
+
+        // Testing the email value against the regular expression
+        const isValidEmail = emailRegExp.test(emailValue);
+
+        // Setting response message and style based on validation result
+        let response = "";
+        if (!isValidEmail) {
+          response = "Invalid Email";
+          output.style.color = "red";
+        } else {
+          response = "Valid Email";
+          output.style.color = "green";
+        }
+
+        // Clearing the input field and displaying the response
+        emailInput.value = "";
+        output.textContent = response;
+      });
+    </script>
+  </body>
+</html>

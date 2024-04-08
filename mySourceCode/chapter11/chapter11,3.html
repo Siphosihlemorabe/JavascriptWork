@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Event Listeners</title>
+    <script>
+      function message(msg, event) {
+        console.log(event);
+        console.log(msg);
+      }
+
+      // Step 2: Attach onload function to window object
+      window.onload = function (event) {
+        message("Window Ready", event);
+      };
+
+      // Step 3: Function to capture DOM content loading
+      function documentReady(event) {
+        message("Document Ready", event);
+      }
+
+      // Step 5: Add event listener for DOMContentLoaded using document object
+      document.addEventListener("DOMContentLoaded", function (event) {
+        message("Document Ready", event);
+      });
+    </script>
+  </head>
+  <body>
+    <!-- Your HTML content here -->
+  </body>
+</html>
+<!--
+<!doctype html>
+<html>
+<head>
+    <title>JS Tester</title>
+</head>
+<body>   
+    <script>        
+        document.addEventListener("DOMContentLoaded", (e) => {
+            message("Document ready", e);
+        });
+        window.onload = (e) => {
+            message("Window ready", e);
+        }
+        function message(val, event) {
+            console.log(event);
+            console.log(val);
+        }
+    </script>
+</body>
+</html>
+
+
+
+-->

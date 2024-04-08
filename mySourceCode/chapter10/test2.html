@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Wishlist App</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+      }
+      #wishlist {
+        margin-bottom: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Wishlist App</h1>
+    <input type="text" id="item" placeholder="Enter an item" />
+    <button onclick="addToWishlist()">Add to Wishlist</button>
+    <div id="wishlist"></div>
+    <button onclick="viewWishlist()">View Wishlist</button>
+    <button onclick="exportWishlist()">Export Wishlist</button>
+
+    <script>
+      let wishlist = [];
+
+      function addToWishlist() {
+        const itemInput = document.getElementById("item");
+        const item = itemInput.value.trim();
+        if (item !== "") {
+          wishlist.push(item);
+          itemInput.value = "";
+          updateWishlistDisplay();
+          alert(`Added '${item}' to wishlist!`);
+        } else {
+          alert("Please enter an item.");
+        }
+      }
+
+      function updateWishlistDisplay() {
+        const wishlistDiv = document.getElementById("wishlist");
+        wishlistDiv.innerHTML = "";
+        wishlist.forEach((item) => {
+          const itemElement = document.createElement("div");
+          itemElement.textContent = item;
+          wishlistDiv.appendChild(itemElement);
+        });
+      }
+
+      function viewWishlist() {
+        if (wishlist.length === 0) {
+          alert("Wishlist is empty.");
+        } else {
+          const wishlistString = wishlist.join("\n");
+          alert("Wishlist:\n" + wishlistString);
+        }
+      }
+
+      function exportWishlist() {
+        if (wishlist.length === 0) {
+          alert("Nothing to export. Wishlist is empty.");
+        } else {
+          const filename = "wishlist.txt";
+          const wishlistString = wishlist.join("\n");
+          const blob = new Blob([wishlistString], { type: "text/plain" });
+          const link = document.createElement("a");
+          link.href = window.URL.createObjectURL(blob);
+          link.download = filename;
+          link.click();
+          alert(`Wishlist exported to ${filename}!`);
+        }
+      }
+    </script>
+  </body>
+</html>

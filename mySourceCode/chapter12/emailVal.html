@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      let emailPattern = /([a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z0-9._-]+)/g;
+      let valid = "siphosim9@gmail.com";
+      let valid2 = "sipgo@g..co.za";
+      let invalid = "123456@#@xo.com";
+      alert(valid.match(emailPattern));
+      alert(valid2.match(emailPattern));
+      alert(invalid.match(emailPattern));
+    </script>
+  </body>
+</html>

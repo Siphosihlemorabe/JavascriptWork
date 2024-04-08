@@ -1,0 +1,13 @@
+{
+  "folders": [
+	{
+		"path": ".."
+	},
+	{
+		"path": "../../JavaScript-from-Beginner-to-Professional-main (1)"
+	}
+],
+  "settings": {
+    "liveServer.settings.multiRootWorkspaceName": "mySourceCode"
+  }
+}

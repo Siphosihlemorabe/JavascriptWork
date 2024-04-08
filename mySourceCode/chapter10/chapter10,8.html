@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Complete JavaScript Course</title>
+  </head>
+  <body>
+    <div id="message"></div>
+    <div id="output"></div>
+    <script>
+      // Step 1: Create an array of names
+      const names = ["Debby", "Bobo", "Charlie", "Davido", "Sbu"];
+
+      // Step 2: Select page elements
+      const table = document.getElementById("table");
+      const messageElement = document.getElementById("message");
+
+      // Step 3: Build function to set up the HTML in a table
+      function build() {
+        // Step 4: Create a table named html and loop through the array contents
+        let html = "";
+        names.forEach((name, index) => {
+          // Step 6: Add class and attributes to table rows
+          html += `<tr data-row="${index}" data-name="${name}" onclick="getData(this)">`;
+          html += `<td class="box">${index}</td>`; // Step 5: Add class 'box'
+          html += `<td>${name}</td>`;
+          html += `</tr>`;
+        });
+        table.innerHTML = html;
+      }
+
+      // Step 7: getData function to handle row clicks
+      function getData(element) {
+        // Step 9: Get attribute values of row and name
+        const row = element.getAttribute("data-row");
+        const name = element.getAttribute("data-name");
+
+        // Step 10: Output values into message element
+        messageElement.textContent = `Row: ${row}, Name: ${name}`;
+      }
+
+      // Step 8: Add table HTML code to the page
+      build();
+    </script>
+  </body>
+</html>
